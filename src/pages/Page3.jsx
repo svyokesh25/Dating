@@ -104,7 +104,7 @@ export default function Page3() {
       <style>{animationStyles}</style>
       <div
         style={{
-          minHeight: '100vh',
+          
           minHeight: '100dvh',
           display: 'flex',
           alignItems: 'center',
