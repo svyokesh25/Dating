@@ -85,7 +85,7 @@ export default function Page1() {
     <>
       <style>{animationStyles}</style>
       <div style={{
-        minHeight: '100vh',
+        
         minHeight: '100dvh', // ✅ fixes mobile browser bar cutting off content
         display: 'flex',
         alignItems: 'center',
