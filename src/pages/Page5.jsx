@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export default function Page5() {
-  const navigate = useNavigate();
   const [dateData, setDateData] = useState(null);
   const [food, setFood] = useState('');
 
   useEffect(() => {
     const storedDateData = JSON.parse(localStorage.getItem('dateData'));
     const storedFood = localStorage.getItem('selectedFood');
-    
+
     if (storedDateData) {
       setDateData(storedDateData);
     }
@@ -17,12 +15,6 @@ export default function Page5() {
       setFood(storedFood);
     }
   }, []);
-
-  const handleRestart = () => {
-    localStorage.removeItem('dateData');
-    localStorage.removeItem('selectedFood');
-    navigate('/');
-  };
 
   const getFormattedDate = () => {
     if (!dateData) return '';
@@ -36,86 +28,78 @@ export default function Page5() {
   const styles = {
     container: {
       minHeight: '100vh',
+      minHeight: '100dvh',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       background: 'linear-gradient(135deg, #ff6b9d 0%, #c06c84 25%, #6c567b 50%, #355c7d 75%, #2a9d8f 100%)',
       fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-      padding: '20px',
+      padding: '14px',
       backgroundAttachment: 'fixed',
     },
     card: {
       background: 'white',
-      borderRadius: '30px',
-      padding: '60px 50px',
-      boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
-      maxWidth: '600px',
+      borderRadius: '26px',
+      padding: '24px 22px',
+      boxShadow: '0 20px 60px rgba(0, 0, 0, 0.28)',
+      maxWidth: '500px',
       width: '100%',
       animation: 'slideIn 0.5s ease-out',
       textAlign: 'center',
     },
+    dogWrap: {
+      marginBottom: '12px',
+      display: 'flex',
+      justifyContent: 'center',
+    },
+    dogImage: {
+      width: '110px',
+      height: '110px',
+      objectFit: 'cover',
+      borderRadius: '18px',
+      boxShadow: '0 8px 24px rgba(255, 107, 157, 0.28)',
+      border: '4px solid #ffe0eb',
+    },
     celebration: {
-      textAlign: 'center',
-      marginBottom: '30px',
-      animation: 'spin 1s linear infinite',
+      marginBottom: '8px',
+      animation: 'float 2s ease-in-out infinite',
     },
     emoji: {
-      fontSize: '100px',
+      fontSize: '40px',
       display: 'inline-block',
     },
     title: {
-      fontSize: '40px',
+      fontSize: '32px',
       fontWeight: 'bold',
       color: '#ff6b9d',
-      marginBottom: '30px',
-      margin: '20px 0 30px 0',
+      margin: '8px 0 18px 0',
+      lineHeight: '1.2',
     },
-    confirmationBox: {
+    detailsBlock: {
       background: '#fff9fb',
-      padding: '40px',
-      borderRadius: '20px',
-      marginBottom: '40px',
-      border: '3px solid #ff6b9d',
+      padding: '18px 16px',
+      borderRadius: '18px',
+      marginBottom: '16px',
+      border: '2px solid #ff6b9d',
+      textAlign: 'left',
     },
-    detailRow: {
-      fontSize: '20px',
-      color: '#2a2a2a',
-      marginBottom: '20px',
-      fontWeight: '500',
-    },
-    detailLabel: {
+    detailLine: {
       fontSize: '18px',
-      color: '#666',
-      marginBottom: '8px',
-    },
-    detailValue: {
-      fontSize: '22px',
-      fontWeight: 'bold',
-      color: '#ff6b9d',
+      color: '#2a2a2a',
+      fontWeight: '600',
+      lineHeight: '1.8',
+      marginBottom: '6px',
+      wordBreak: 'break-word',
     },
     finalMessage: {
-      fontSize: '22px',
+      fontSize: '18px',
       fontWeight: 'bold',
       textAlign: 'center',
       color: '#2a2a2a',
-      marginBottom: '40px',
-      lineHeight: '1.6',
+      lineHeight: '1.55',
       background: '#fff9fb',
-      padding: '25px',
-      borderRadius: '15px',
-    },
-    restartButton: {
-      padding: '18px 50px',
-      fontSize: '18px',
-      fontWeight: 'bold',
-      border: 'none',
-      borderRadius: '50px',
-      background: 'linear-gradient(135deg, #2a9d8f, #34d399)',
-      color: 'white',
-      cursor: 'pointer',
-      transition: 'all 0.3s ease',
-      boxShadow: '0 4px 15px rgba(42, 157, 143, 0.4)',
-      width: '100%',
+      padding: '16px 14px',
+      borderRadius: '14px',
     },
   };
 
@@ -123,7 +107,7 @@ export default function Page5() {
     @keyframes slideIn {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(24px);
       }
       to {
         opacity: 1;
@@ -131,12 +115,12 @@ export default function Page5() {
       }
     }
 
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
       }
-      100% {
-        transform: rotate(360deg);
+      50% {
+        transform: translateY(-6px);
       }
     }
 
@@ -148,6 +132,44 @@ export default function Page5() {
       margin: 0;
       padding: 0;
     }
+
+    @media (max-width: 480px) {
+      .page5-card {
+        padding: 18px 14px !important;
+        border-radius: 20px !important;
+      }
+
+      .page5-dog {
+        width: 88px !important;
+        height: 88px !important;
+        border-radius: 14px !important;
+      }
+
+      .page5-title {
+        font-size: 24px !important;
+        margin: 6px 0 14px 0 !important;
+      }
+
+      .page5-details {
+        padding: 14px 12px !important;
+      }
+
+      .page5-line {
+        font-size: 15px !important;
+        line-height: 1.7 !important;
+      }
+
+      .page5-message {
+        font-size: 15px !important;
+        padding: 13px 11px !important;
+      }
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+      .page5-title {
+        font-size: 28px !important;
+      }
+    }
   `;
 
   if (!dateData) {
@@ -155,8 +177,8 @@ export default function Page5() {
       <>
         <style>{animationStyles}</style>
         <div style={styles.container}>
-          <div style={styles.card}>
-            <h1 style={styles.title}>Loading...</h1>
+          <div style={styles.card} className="page5-card">
+            <h1 style={styles.title} className="page5-title">Loading...</h1>
           </div>
         </div>
       </>
@@ -167,54 +189,45 @@ export default function Page5() {
     <>
       <style>{animationStyles}</style>
       <div style={styles.container}>
-        <div style={styles.card}>
+        <div style={styles.card} className="page5-card">
+          <div style={styles.dogWrap}>
+            <img
+              src="/dog.jpg"
+              alt="Cute dog"
+              style={styles.dogImage}
+              className="page5-dog"
+            />
+          </div>
+
           <div style={styles.celebration}>
-            <span style={styles.emoji}>✨</span>
+            <span style={styles.emoji}>😍</span>
           </div>
 
-          <h1 style={styles.title}>Glad you didn't say NO! 🎊</h1>
+          <h1 style={styles.title} className="page5-title">
+            Woo!!! Glad you didn't say NO! 🎊
+          </h1>
 
-          <div style={styles.confirmationBox}>
-            <div style={styles.detailRow}>
-              <div style={styles.detailLabel}>📅 DATE</div>
-              <div style={styles.detailValue}>{getFormattedDate()}</div>
+          <div style={styles.detailsBlock} className="page5-details">
+            <div style={styles.detailLine} className="page5-line">
+              📅 DATE - {getFormattedDate()}
             </div>
-
-            <div style={styles.detailRow}>
-              <div style={styles.detailLabel}>🕐 TIME</div>
-              <div style={styles.detailValue}>{dateData.time}</div>
+            <div style={styles.detailLine} className="page5-line">
+              🕐 TIME - {dateData.time}
             </div>
-
-            <div style={styles.detailRow}>
-              <div style={styles.detailLabel}>📍 PLACE</div>
-              <div style={styles.detailValue}>{dateData.place}</div>
+            <div style={styles.detailLine} className="page5-line">
+              📍 PLACE - {dateData.place}
             </div>
-
-            <div style={styles.detailRow}>
-              <div style={styles.detailLabel}>🍽️ FOOD</div>
-              <div style={styles.detailValue}>{food}</div>
+            <div style={{ ...styles.detailLine, marginBottom: 0 }} className="page5-line">
+              🍽️ FOOD - {food}
             </div>
           </div>
 
-          <div style={styles.finalMessage}>
+          <div style={styles.finalMessage} className="page5-message">
             Be ready by <strong>{dateData.time}</strong>! 💨
             <br />I'll be coming to pick you up 🚗
             <br />
             <br />See you soon! 💕
           </div>
-
-          <button
-            onClick={handleRestart}
-            style={styles.restartButton}
-            onMouseEnter={(e) => {
-              e.target.style.transform = 'scale(1.05)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.transform = 'scale(1)';
-            }}
-          >
-            Ask Someone Else 😄
-          </button>
         </div>
       </div>
     </>

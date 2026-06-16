@@ -112,7 +112,7 @@ export default function Page4() {
           <h1 style={styles.title}>What Should We Eat? 🍽️</h1>
 
           <p style={styles.subtitle}>
-            Pick your favorite (best for dating vibes!)
+            Pick your favorite (Note: We can have a split bill 😁)
           </p>
 
           <div style={styles.foodGrid}>
