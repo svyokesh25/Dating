@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Page4() {
   const navigate = useNavigate();
-  const [selectedFood, setSelectedFood] = useState('');
 
   const foods = [
     { id: 1, name: 'Burger', emoji: '🍔' },
@@ -25,7 +24,8 @@ export default function Page4() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      background: 'linear-gradient(135deg, #ff6b9d 0%, #c06c84 25%, #6c567b 50%, #355c7d 75%, #2a9d8f 100%)',
+      background:
+        'linear-gradient(135deg, #ff6b9d 0%, #c06c84 25%, #6c567b 50%, #355c7d 75%, #2a9d8f 100%)',
       fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
       padding: '20px',
       backgroundAttachment: 'fixed',
@@ -71,6 +71,7 @@ export default function Page4() {
       gap: '15px',
       fontWeight: '600',
       color: '#2a2a2a',
+      boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
     },
     foodEmoji: {
       fontSize: '60px',
@@ -105,10 +106,14 @@ export default function Page4() {
   return (
     <>
       <style>{animationStyles}</style>
+
       <div style={styles.container}>
         <div style={styles.card}>
           <h1 style={styles.title}>What Should We Eat? 🍽️</h1>
-          <p style={styles.subtitle}>Pick your favorite (best for dating vibes!)</p>
+
+          <p style={styles.subtitle}>
+            Pick your favorite (best for dating vibes!)
+          </p>
 
           <div style={styles.foodGrid}>
             {foods.map((food) => (
@@ -118,14 +123,17 @@ export default function Page4() {
                 style={styles.foodCard}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'scale(1.1)';
-                  e.currentTarget.style.boxShadow = '0 8px 30px rgba(255, 107, 157, 0.4)';
+                  e.currentTarget.style.boxShadow =
+                    '0 8px 30px rgba(255, 107, 157, 0.4)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'scale(1)';
-                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
+                  e.currentTarget.style.boxShadow =
+                    '0 4px 15px rgba(0, 0, 0, 0.1)';
                 }}
               >
                 <span style={styles.foodEmoji}>{food.emoji}</span>
+
                 <span style={styles.foodName}>{food.name}</span>
               </button>
             ))}
